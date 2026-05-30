@@ -72,7 +72,7 @@
         <item name="labelVisibilityMode">labeled</item>
     </style>
 
-    <style name="TerraNavIndicator" parent="Widget.MaterialComponents.BottomNavigationView.ActiveIndicator">
+    <style name="TerraNavIndicator" parent="">
         <item name="android:color">#1A3D7EE8</item>
         <item name="shapeAppearanceOverlay">@style/NavIndicatorShape</item>
     </style>
