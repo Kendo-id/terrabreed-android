@@ -40,6 +40,12 @@
     <color name="chart_temp_line">#FFE86C5D</color>
     <color name="chart_humid_line">#FF5B9BD5</color>
     <color name="chart_target_line">#FFD97706</color>
+    <color name="chart_temp_fill">#33E86C5D</color>
+    <color name="chart_humid_fill">#335B9BD5</color>
+    <color name="chart_target">#FFD97706</color>
+    <color name="chart_grid">#1FFFFFFF</color>
+    <color name="chart_text">#FF8A90A0</color>
+    <color name="white">#FFFFFFFF</color>
 
     <!-- Card tints -->
     <color name="temp_card_bg">#0AE86C5D</color>
