@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_dashboard"
+        android:title="Dashboard"
+        android:icon="@drawable/ic_nav_dashboard"/>
+    <item android:id="@+id/nav_control"
+        android:title="Kontrol"
+        android:icon="@drawable/ic_nav_control"/>
+    <item android:id="@+id/nav_ai_chat"
+        android:title="TERRA AI"
+        android:icon="@drawable/ic_nav_ai"/>
+    <item android:id="@+id/nav_incubation"
+        android:title="Inkubasi"
+        android:icon="@drawable/ic_nav_incubation"/>
+</menu>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="@color/bg_primary">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar" android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize" android:background="@color/bg_surface"
+        app:titleTextColor="@color/text_primary" />
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="20dp">
+
+            <!-- Server Config -->
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="KONFIGURASI SERVER" android:textSize="11sp"
+                android:textColor="@color/accent_primary" android:letterSpacing="0.12"
+                android:fontFamily="sans-serif-medium" android:layout_marginBottom="16dp"/>
+
+            <!-- HTTPS Toggle -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/bg_card" app:cardCornerRadius="12dp"
+                app:strokeColor="@color/border" app:strokeWidth="1dp" app:cardElevation="0dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:padding="16dp"
+                    android:gravity="center_vertical">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Gunakan HTTPS" android:textColor="@color/text_primary"
+                            android:textSize="14sp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Aktifkan untuk server dengan SSL" android:textColor="@color/text_secondary"
+                            android:textSize="12sp"/>
+                    </LinearLayout>
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switch_https"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:checked="true"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:hint="IP Address Server" style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxStrokeColor="@color/border" app:hintTextColor="@color/text_secondary"
+                android:layout_marginBottom="12dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_server_ip" android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:textColor="@color/text_primary"
+                    android:inputType="text" android:hint="10.10.1.1" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:hint="Port Server (kosongkan jika default)" style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxStrokeColor="@color/border" app:hintTextColor="@color/text_secondary"
+                android:layout_marginBottom="12dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_server_port" android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:textColor="@color/text_primary"
+                    android:inputType="number" android:hint="(kosong = port default)" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:hint="Interval Refresh (detik)" style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxStrokeColor="@color/border" app:hintTextColor="@color/text_secondary"
+                android:layout_marginBottom="24dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_refresh_interval" android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:textColor="@color/text_primary"
+                    android:inputType="number" android:hint="5" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button android:id="@+id/btn_test"
+                android:layout_width="match_parent" android:layout_height="52dp"
+                android:text="Test Koneksi"
+app:icon="@drawable/ic_nav_control" android:backgroundTint="@color/bg_elevated"
+                android:textColor="@color/accent_primary" android:layout_marginBottom="12dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                app:strokeColor="@color/accent_primary" />
+
+            <Button android:id="@+id/btn_save"
+                android:layout_width="match_parent" android:layout_height="52dp"
+                android:text="Simpan Pengaturan"
+app:icon="@drawable/ic_save" android:backgroundTint="@color/accent_primary"
+                android:textColor="@color/text_on_accent" />
+
+            <!-- Info card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:cardBackgroundColor="#1A2196F3" app:cardCornerRadius="12dp"
+                app:strokeColor="#332196F3" app:strokeWidth="1dp" app:cardElevation="0dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:text="ℹ️  Server TerraBreed Anda: https://10.10.1.1/terrabreed\n\nPastikan HP dan server di jaringan WiFi yang sama. Untuk server lokal dengan self-signed SSL, HTTPS tetap berfungsi karena app sudah dikonfigurasi untuk mempercayai semua sertifikat lokal."
+                    android:textColor="@color/text_secondary" android:textSize="12sp"
+                    android:lineSpacingExtra="4dp"/>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

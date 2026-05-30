@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/bg_primary">
+
+    <!-- Header -->
+    <LinearLayout android:id="@+id/header"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:padding="16dp"
+        android:background="@color/bg_surface"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="🐣  TERRA AI" android:textSize="16sp"
+            android:textColor="@color/text_primary" android:fontFamily="sans-serif-medium"/>
+        <ImageButton android:id="@+id/btn_clear"
+            android:layout_width="36dp" android:layout_height="36dp"
+            android:src="@drawable/ic_delete"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:tint="@color/text_secondary"
+            android:contentDescription="Hapus chat"/>
+    </LinearLayout>
+
+    <!-- Quick prompt chips -->
+    <HorizontalScrollView android:id="@+id/scroll_chips"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/header">
+        <com.google.android.material.chip.ChipGroup
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:paddingHorizontal="12dp" android:paddingVertical="8dp"
+            app:singleLine="true">
+            <com.google.android.material.chip.Chip android:id="@+id/chip_status"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="📊 Status Mesin"
+                style="@style/Widget.MaterialComponents.Chip.Action"
+                app:chipBackgroundColor="@color/bg_elevated"
+                android:textColor="@color/text_secondary" android:textSize="12sp"/>
+            <com.google.android.material.chip.Chip android:id="@+id/chip_temp"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="🌡️ Cek Suhu"
+                style="@style/Widget.MaterialComponents.Chip.Action"
+                app:chipBackgroundColor="@color/bg_elevated"
+                android:textColor="@color/text_secondary" android:textSize="12sp"/>
+            <com.google.android.material.chip.Chip android:id="@+id/chip_advice"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="💡 Saran Hari Ini"
+                style="@style/Widget.MaterialComponents.Chip.Action"
+                app:chipBackgroundColor="@color/bg_elevated"
+                android:textColor="@color/text_secondary" android:textSize="12sp"/>
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
+
+    <!-- Divider -->
+    <View android:id="@+id/divider"
+        android:layout_width="match_parent" android:layout_height="1dp"
+        android:background="@color/divider"
+        app:layout_constraintTop_toBottomOf="@id/scroll_chips"/>
+
+    <!-- Chat scroll -->
+    <ScrollView android:id="@+id/scroll_chat"
+        android:layout_width="match_parent" android:layout_height="0dp"
+        android:fillViewport="true" android:clipToPadding="false"
+        android:paddingBottom="8dp"
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        app:layout_constraintBottom_toTopOf="@id/typing_divider">
+        <LinearLayout android:id="@+id/chat_container"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="12dp"/>
+    </ScrollView>
+
+    <!-- Typing indicator -->
+    <View android:id="@+id/typing_divider"
+        android:layout_width="match_parent" android:layout_height="1dp"
+        android:background="@color/divider"
+        app:layout_constraintBottom_toTopOf="@id/layout_typing"/>
+
+    <LinearLayout android:id="@+id/layout_typing"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:padding="12dp"
+        android:gravity="center_vertical" android:visibility="gone"
+        android:background="@color/bg_surface"
+        app:layout_constraintBottom_toTopOf="@id/input_container">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="🐣" android:textSize="18sp" android:layout_marginEnd="8dp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="TERRA sedang mengetik..." android:textSize="13sp"
+            android:textColor="@color/text_secondary" android:textStyle="italic"/>
+    </LinearLayout>
+
+    <!-- Input area -->
+    <LinearLayout android:id="@+id/input_container"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:padding="12dp"
+        android:gravity="center_vertical"
+        android:background="@color/bg_surface"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:layout_marginEnd="8dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@color/border"
+            app:boxCornerRadiusTopStart="24dp" app:boxCornerRadiusTopEnd="24dp"
+            app:boxCornerRadiusBottomStart="24dp" app:boxCornerRadiusBottomEnd="24dp"
+            app:hintEnabled="false">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_message"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:hint="Tanya TERRA..." android:textColor="@color/text_primary"
+                android:textSize="14sp" android:maxLines="4"
+                android:imeOptions="actionSend"
+                android:inputType="textMultiLine|textCapSentences"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_send"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:src="@drawable/ic_send"
+            app:backgroundTint="@color/accent_primary"
+            app:tint="@color/text_on_accent"
+            app:fabSize="mini"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

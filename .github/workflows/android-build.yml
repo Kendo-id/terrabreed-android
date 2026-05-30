@@ -1,0 +1,99 @@
+name: Android Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          cmdline-tools-version: '11076708'
+          accept-android-sdk-licenses: true
+
+      - name: Install Android build tools
+        shell: bash
+        run: sdkmanager "build-tools;34.0.0" "platforms;android-34" "platform-tools"
+
+      - name: Create local.properties
+        run: echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
+
+      - name: Cache Gradle packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Build Debug APK
+        shell: bash
+        run: |
+          ./gradlew assembleDebug --no-daemon --stacktrace 2>&1 | tee /tmp/gradle_output.txt
+          exit ${PIPESTATUS[0]}
+
+      - name: Emit error annotations on failure
+        if: failure()
+        shell: bash
+        run: |
+          # Emit last 50 lines as ::error:: so they appear in check annotations
+          ERRORS=$(grep -E "error:|Error:|FAILED|Exception|Caused by:|e:.*\.kt" /tmp/gradle_output.txt | tail -20)
+          if [ -n "$ERRORS" ]; then
+            while IFS= read -r line; do
+              echo "::error::$line"
+            done <<< "$ERRORS"
+          fi
+          # Also emit the last 30 lines unconditionally
+          TAIL=$(tail -30 /tmp/gradle_output.txt)
+          while IFS= read -r line; do
+            echo "::warning::$line"
+          done <<< "$TAIL"
+
+      - name: List APK output
+        if: success()
+        run: find app/build/outputs -name "*.apk" 2>/dev/null
+
+      - name: Upload APK artifact
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: terrabreed-debug-apk
+          path: app/build/outputs/apk/debug/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Build Summary
+        if: success()
+        shell: bash
+        run: |
+          APK=$(find app/build/outputs/apk/debug -name "*.apk" 2>/dev/null | head -1)
+          echo "## ✅ Build Sukses!" >> $GITHUB_STEP_SUMMARY
+          echo "| Info | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Package | com.terrabreed.app |" >> $GITHUB_STEP_SUMMARY
+          echo "| Version | 2.0 (versionCode 1) |" >> $GITHUB_STEP_SUMMARY
+          if [ -n "$APK" ]; then
+            APK_SIZE=$(du -sh "$APK" | cut -f1)
+            echo "| APK Size | $APK_SIZE |" >> $GITHUB_STEP_SUMMARY
+          fi

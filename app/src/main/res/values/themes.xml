@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.TerraBreed" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Backgrounds -->
+        <item name="android:windowBackground">@color/bg_primary</item>
+        <item name="android:colorBackground">@color/bg_primary</item>
+        <item name="colorSurface">@color/bg_surface</item>
+        <item name="colorSurfaceVariant">@color/bg_elevated</item>
+
+        <!-- Brand colors -->
+        <item name="colorPrimary">@color/nav_active</item>
+        <item name="colorPrimaryDark">@color/bg_surface</item>
+        <item name="colorPrimaryVariant">@color/nav_active</item>
+        <item name="colorSecondary">@color/accent_primary</item>
+        <item name="colorSecondaryVariant">@color/accent_primary_dark</item>
+        <item name="colorOnPrimary">@color/text_primary</item>
+        <item name="colorOnSecondary">@color/text_on_accent</item>
+
+        <!-- Text -->
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        <item name="android:textColorHint">@color/text_disabled</item>
+
+        <!-- Status bar dark -->
+        <item name="android:statusBarColor">@color/bg_surface</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:navigationBarColor">@color/bg_surface</item>
+        <item name="android:windowLightNavigationBar">false</item>
+
+        <!-- Toolbar -->
+        <item name="toolbarStyle">@style/TerraToolbar</item>
+        <item name="actionBarStyle">@style/TerraToolbar</item>
+
+        <!-- Bottom Nav -->
+        <item name="bottomNavigationStyle">@style/TerraBottomNav</item>
+
+        <!-- Input fields -->
+        <item name="editTextStyle">@style/TerraEditText</item>
+        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
+
+        <!-- Cards -->
+        <item name="materialCardViewStyle">@style/TerraCard</item>
+
+        <!-- Ripple -->
+        <item name="colorControlHighlight">@color/ripple</item>
+
+        <!-- Checkbox / Switch -->
+        <item name="colorControlActivated">@color/nav_active</item>
+        <item name="switchStyle">@style/TerraSwitchStyle</item>
+
+        <!-- Chip -->
+        <item name="chipStyle">@style/TerraChip</item>
+
+        <!-- FAB -->
+        <item name="floatingActionButtonStyle">@style/TerraFAB</item>
+    </style>
+
+    <style name="TerraToolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="android:background">@color/bg_surface</item>
+        <item name="titleTextColor">@color/text_primary</item>
+        <item name="subtitleTextColor">@color/text_secondary</item>
+        <item name="android:elevation">0dp</item>
+        <item name="navigationIconTint">@color/text_secondary</item>
+    </style>
+
+    <style name="TerraBottomNav" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:background">@color/bg_surface</item>
+        <item name="itemIconTint">@color/bottom_nav_colors</item>
+        <item name="itemTextColor">@color/bottom_nav_colors</item>
+        <item name="itemActiveIndicatorStyle">@style/TerraNavIndicator</item>
+        <item name="elevation">0dp</item>
+        <item name="labelVisibilityMode">labeled</item>
+    </style>
+
+    <style name="TerraNavIndicator" parent="Widget.MaterialComponents.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">#1A3D7EE8</item>
+        <item name="shapeAppearanceOverlay">@style/NavIndicatorShape</item>
+    </style>
+
+    <style name="NavIndicatorShape" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">14dp</item>
+    </style>
+
+    <style name="TerraCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/bg_card</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeColor">@color/border</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <style name="TerraEditText" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/border</item>
+        <item name="boxBackgroundColor">@color/bg_card</item>
+        <item name="hintTextColor">@color/text_secondary</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="boxCornerRadiusTopStart">10dp</item>
+        <item name="boxCornerRadiusTopEnd">10dp</item>
+        <item name="boxCornerRadiusBottomStart">10dp</item>
+        <item name="boxCornerRadiusBottomEnd">10dp</item>
+    </style>
+
+    <style name="TerraSwitchStyle" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="thumbTint">@color/switch_thumb_colors</item>
+        <item name="trackTint">@color/switch_track_colors</item>
+    </style>
+
+    <style name="TerraChip" parent="Widget.MaterialComponents.Chip.Action">
+        <item name="chipBackgroundColor">@color/bg_elevated</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="chipStrokeColor">@color/border</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="chipCornerRadius">20dp</item>
+    </style>
+
+    <style name="TerraFAB" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="backgroundTint">@color/nav_active</item>
+        <item name="tint">@color/text_primary</item>
+        <item name="elevation">6dp</item>
+    </style>
+
+    <!-- Splash theme - no action bar, no title -->
+    <style name="Theme.TerraBreed.Splash" parent="Theme.TerraBreed">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+</resources>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:padding="12dp"
+    android:background="@drawable/widget_bg_rounded">
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="💧 KELEMBAPAN" android:textSize="10sp" android:textColor="#FFADB5BD"
+        android:letterSpacing="0.15" />
+    <TextView android:id="@+id/tv_widget_humid_value"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="--%"  android:textSize="32sp" android:textColor="#FFF8F9FA"
+        android:fontFamily="sans-serif-light" />
+    <TextView android:id="@+id/tv_widget_humid_status"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="--" android:textSize="12sp" android:textColor="#FF5B9BD5" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:layout_marginTop="4dp">
+        <TextView android:id="@+id/tv_widget_target_humid"
+            android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+            android:text="Target: --%"  android:textSize="10sp" android:textColor="#FF6C757D" />
+        <TextView android:id="@+id/tv_widget_humidifier"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="--" android:textSize="10sp" android:textColor="#FFADB5BD" />
+    </LinearLayout>
+    <TextView android:id="@+id/tv_widget_update_time"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="--:--" android:textSize="9sp" android:textColor="#4DFFFFFF"
+        android:layout_marginTop="4dp" />
+</LinearLayout>

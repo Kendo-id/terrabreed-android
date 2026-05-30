@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/swipe_refresh"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="16dp">
+            <!-- Current Temp Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/bg_card" app:cardCornerRadius="16dp"
+                app:strokeColor="@color/border" app:strokeWidth="1dp" app:cardElevation="0dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="20dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical">
+                        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="🌡️ SUHU SEKARANG" android:textSize="10sp"
+                                android:textColor="@color/text_secondary" android:letterSpacing="0.15"/>
+                            <TextView android:id="@+id/tv_current_temp"
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="--" android:textSize="52sp" android:textColor="@color/chart_temp_line"
+                                android:fontFamily="sans-serif-light"/>
+                            <TextView android:id="@+id/tv_temp_status"
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="--" android:textSize="14sp" android:textColor="@color/status_ok"/>
+                            <TextView android:id="@+id/tv_target_temp"
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Target: --°C" android:textSize="12sp" android:textColor="@color/text_secondary"
+                                android:layout_marginTop="4dp"/>
+                        </LinearLayout>
+                        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:orientation="vertical" android:gravity="end">
+                            <TextView android:id="@+id/tv_ds1"
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="DS1: --°C" android:textSize="12sp" android:textColor="@color/text_secondary"/>
+                            <TextView android:id="@+id/tv_ds2"
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="DS2: --°C" android:textSize="12sp" android:textColor="@color/text_secondary"
+                                android:layout_marginTop="4dp"/>
+                            <TextView android:id="@+id/tv_sht"
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="SHT: --°C" android:textSize="12sp" android:textColor="@color/text_secondary"
+                                android:layout_marginTop="4dp"/>
+                            <TextView android:id="@+id/tv_heater_status"
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="Pemanas OFF" android:textSize="12sp"
+                                android:textColor="@color/status_warning" android:layout_marginTop="8dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Stats Row -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:layout_marginTop="12dp" android:weightSum="3">
+                <com.google.android.material.card.MaterialCardView android:layout_width="0dp"
+                    android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginEnd="4dp"
+                    app:cardBackgroundColor="@color/bg_card" app:cardCornerRadius="12dp"
+                    app:strokeColor="@color/border" app:strokeWidth="1dp" app:cardElevation="0dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="vertical" android:padding="12dp" android:gravity="center">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="AVG" android:textSize="9sp" android:textColor="@color/text_secondary" android:letterSpacing="0.1"/>
+                        <TextView android:id="@+id/tv_avg_temp"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="--" android:textSize="13sp" android:textColor="@color/text_primary" android:fontFamily="sans-serif-medium"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView android:layout_width="0dp"
+                    android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginHorizontal="4dp"
+                    app:cardBackgroundColor="@color/bg_card" app:cardCornerRadius="12dp"
+                    app:strokeColor="@color/border" app:strokeWidth="1dp" app:cardElevation="0dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="vertical" android:padding="12dp" android:gravity="center">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="MIN" android:textSize="9sp" android:textColor="@color/chart_humid_line" android:letterSpacing="0.1"/>
+                        <TextView android:id="@+id/tv_min_temp"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="--" android:textSize="13sp" android:textColor="@color/text_primary" android:fontFamily="sans-serif-medium"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView android:layout_width="0dp"
+                    android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="4dp"
+                    app:cardBackgroundColor="@color/bg_card" app:cardCornerRadius="12dp"
+                    app:strokeColor="@color/border" app:strokeWidth="1dp" app:cardElevation="0dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="vertical" android:padding="12dp" android:gravity="center">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="MAX" android:textSize="9sp" android:textColor="@color/chart_temp_line" android:letterSpacing="0.1"/>
+                        <TextView android:id="@+id/tv_max_temp"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="--" android:textSize="13sp" android:textColor="@color/text_primary" android:fontFamily="sans-serif-medium"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- Chart Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardBackgroundColor="@color/bg_card" app:cardCornerRadius="16dp"
+                app:strokeColor="@color/border" app:strokeWidth="1dp" app:cardElevation="0dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="16dp">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="RIWAYAT SUHU" android:textSize="10sp"
+                        android:textColor="@color/text_secondary" android:letterSpacing="0.15"
+                        android:layout_marginBottom="12dp"/>
+                    <!-- Time range chips -->
+                    <com.google.android.material.chip.ChipGroup
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp" app:singleSelection="true">
+                        <com.google.android.material.chip.Chip android:id="@+id/chip_1h"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="1 Jam" style="@style/Widget.MaterialComponents.Chip.Choice"
+                            app:chipBackgroundColor="@color/bg_elevated" android:textColor="@color/text_primary"/>
+                        <com.google.android.material.chip.Chip android:id="@+id/chip_3h"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="3 Jam" style="@style/Widget.MaterialComponents.Chip.Choice"
+                            app:chipBackgroundColor="@color/bg_elevated" android:textColor="@color/text_primary"/>
+                        <com.google.android.material.chip.Chip android:id="@+id/chip_6h"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="6 Jam" style="@style/Widget.MaterialComponents.Chip.Choice"
+                            app:chipBackgroundColor="@color/bg_elevated" android:textColor="@color/text_primary"/>
+                        <com.google.android.material.chip.Chip android:id="@+id/chip_24h"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="24 Jam" style="@style/Widget.MaterialComponents.Chip.Choice"
+                            app:chipBackgroundColor="@color/bg_elevated" android:textColor="@color/text_primary"/>
+                    </com.google.android.material.chip.ChipGroup>
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/temp_chart"
+                        android:layout_width="match_parent" android:layout_height="220dp"/>
+                    <TextView android:id="@+id/tv_chart_empty"
+                        android:layout_width="match_parent" android:layout_height="220dp"
+                        android:text="Belum ada data grafik" android:textSize="14sp"
+                        android:textColor="@color/text_disabled" android:gravity="center"
+                        android:visibility="gone"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </ScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

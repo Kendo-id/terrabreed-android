@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/bg_primary">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:background="@color/bg_surface"
+        app:elevation="0dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/bg_surface"
+            app:contentInsetStartWithNavigation="0dp">
+
+            <!-- Logo + Title -->
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="match_parent"
+                android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginStart="4dp">
+                <ImageView
+                    android:layout_width="30dp" android:layout_height="30dp"
+                    android:src="@drawable/ic_logo"
+                    android:scaleType="fitCenter"
+                    android:layout_marginEnd="10dp"/>
+                <TextView
+                    android:id="@+id/tv_toolbar_title"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="TerraBreed"
+                    android:textSize="16sp" android:textColor="@color/text_primary"
+                    android:fontFamily="sans-serif-medium" android:letterSpacing="0.01em"/>
+            </LinearLayout>
+
+            <!-- Settings icon -->
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                android:id="@+id/toolbar_menu"
+                app:menu="@menu/menu_main"/>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:background="@color/divider"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/bg_surface"
+        app:menu="@menu/bottom_nav_menu"
+        app:itemIconTint="@color/bottom_nav_colors"
+        app:itemTextColor="@color/bottom_nav_colors"
+        app:elevation="0dp"
+        app:labelVisibilityMode="labeled"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_voice"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="72dp"
+        android:src="@drawable/ic_mic"
+        app:backgroundTint="@color/nav_active"
+        app:tint="@color/text_primary"
+        app:fabSize="mini"
+        app:elevation="6dp"
+        android:contentDescription="TERRA AI Voice"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

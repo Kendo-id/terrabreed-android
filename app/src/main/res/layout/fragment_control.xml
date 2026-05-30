@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/swipe_refresh"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="16dp">
+
+            <!-- Live readings -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:weightSum="2"
+                android:layout_marginBottom="16dp">
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp" android:layout_height="80dp"
+                    android:layout_weight="1" android:layout_marginEnd="8dp"
+                    app:cardBackgroundColor="@color/temp_card_bg" app:cardCornerRadius="12dp"
+                    app:strokeColor="@color/chart_temp_line" app:strokeWidth="1dp" app:cardElevation="0dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                        android:orientation="vertical" android:padding="12dp" android:gravity="center">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="🌡️ Suhu" android:textSize="11sp" android:textColor="@color/text_secondary"/>
+                        <TextView android:id="@+id/tv_live_temp"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="--°C" android:textSize="24sp" android:textColor="@color/chart_temp_line"
+                            android:fontFamily="sans-serif-light"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp" android:layout_height="80dp"
+                    android:layout_weight="1" android:layout_marginStart="8dp"
+                    app:cardBackgroundColor="@color/humid_card_bg" app:cardCornerRadius="12dp"
+                    app:strokeColor="@color/chart_humid_line" app:strokeWidth="1dp" app:cardElevation="0dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                        android:orientation="vertical" android:padding="12dp" android:gravity="center">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="💧 Kelembapan" android:textSize="11sp" android:textColor="@color/text_secondary"/>
+                        <TextView android:id="@+id/tv_live_humid"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="--%"  android:textSize="24sp" android:textColor="@color/chart_humid_line"
+                            android:fontFamily="sans-serif-light"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- Auto Mode Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/bg_card" app:cardCornerRadius="16dp"
+                app:strokeColor="@color/border" app:strokeWidth="1dp" app:cardElevation="0dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:padding="16dp" android:gravity="center_vertical">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="⚙️ MODE KONTROL" android:textSize="10sp"
+                            android:textColor="@color/text_secondary" android:letterSpacing="0.12"/>
+                        <TextView android:id="@+id/tv_auto_mode_label"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Mode: OTOMATIS ✅" android:textSize="14sp"
+                            android:textColor="@color/status_ok" android:fontFamily="sans-serif-medium"/>
+                    </LinearLayout>
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switch_auto_mode"
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:checked="true"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Actuator Controls -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/bg_card" app:cardCornerRadius="16dp"
+                app:strokeColor="@color/border" app:strokeWidth="1dp" app:cardElevation="0dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="16dp">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="KONTROL AKTUATOR" android:textSize="10sp"
+                        android:textColor="@color/text_secondary" android:letterSpacing="0.12"
+                        android:layout_marginBottom="12dp"/>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:weightSum="3">
+                        <Button android:id="@+id/btn_heater"
+                            android:layout_width="0dp" android:layout_height="80dp"
+                            android:layout_weight="1" android:layout_marginEnd="6dp"
+                            android:text="Pemanas
+○ OFF"
+                            app:icon="@drawable/ic_heater"
+                            android:backgroundTint="@color/bg_elevated"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="11sp"/>
+                        <Button android:id="@+id/btn_humidifier"
+                            android:layout_width="0dp" android:layout_height="80dp"
+                            android:layout_weight="1" android:layout_marginHorizontal="3dp"
+                            android:text="💧 HUMIDIFIER\n○ OFF"
+                            android:backgroundTint="@color/bg_elevated"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="11sp"/>
+                        <Button android:id="@+id/btn_fan"
+                            android:layout_width="0dp" android:layout_height="80dp"
+                            android:layout_weight="1" android:layout_marginStart="6dp"
+                            android:text="💨 KIPAS\n○ OFF"
+                            android:backgroundTint="@color/bg_elevated"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="11sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Target Settings -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/bg_card" app:cardCornerRadius="16dp"
+                app:strokeColor="@color/border" app:strokeWidth="1dp" app:cardElevation="0dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="16dp">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="TARGET PARAMETER" android:textSize="10sp"
+                        android:textColor="@color/text_secondary" android:letterSpacing="0.12"
+                        android:layout_marginBottom="16dp"/>
+
+                    <!-- Target Temp -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:layout_marginBottom="4dp">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:text="🌡️ Target Suhu"
+                            android:textSize="13sp" android:textColor="@color/text_primary"/>
+                        <TextView android:id="@+id/tv_target_temp_value"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="37.5°C" android:textSize="16sp"
+                            android:textColor="@color/chart_temp_line" android:fontFamily="sans-serif-medium"/>
+                    </LinearLayout>
+                    <SeekBar android:id="@+id/seek_target_temp"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:progressTint="@color/chart_temp_line"
+                        android:thumbTint="@color/chart_temp_line"/>
+
+                    <!-- Target Humid -->
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:layout_marginBottom="4dp">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:text="💧 Target Kelembapan"
+                            android:textSize="13sp" android:textColor="@color/text_primary"/>
+                        <TextView android:id="@+id/tv_target_humid_value"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="60%" android:textSize="16sp"
+                            android:textColor="@color/chart_humid_line" android:fontFamily="sans-serif-medium"/>
+                    </LinearLayout>
+                    <SeekBar android:id="@+id/seek_target_humid"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:progressTint="@color/chart_humid_line"
+                        android:thumbTint="@color/chart_humid_line"/>
+
+                    <Button android:id="@+id/btn_apply_settings"
+                        android:layout_width="match_parent" android:layout_height="48dp"
+                        android:text="Terapkan Target"
+app:icon="@drawable/ic_save" android:backgroundTint="@color/accent_primary"
+                        android:textColor="@color/text_on_accent"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Tray Controls -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/bg_card" app:cardCornerRadius="16dp"
+                app:strokeColor="@color/border" app:strokeWidth="1dp" app:cardElevation="0dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="16dp">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:text="KONTROL RAK TELUR" android:textSize="10sp"
+                        android:textColor="@color/text_secondary" android:letterSpacing="0.12"
+                        android:layout_marginBottom="12dp"/>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:layout_marginBottom="12dp">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:text="Posisi:" android:textSize="13sp"
+                            android:textColor="@color/text_secondary"/>
+                        <TextView android:id="@+id/tv_tray_status"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="--" android:textSize="13sp" android:textColor="@color/text_primary"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:text="Motor:" android:textSize="13sp"
+                            android:textColor="@color/text_secondary"/>
+                        <TextView android:id="@+id/tv_motor_status"
+                            android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="--" android:textSize="13sp" android:textColor="@color/text_primary"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:weightSum="2">
+                        <Button android:id="@+id/btn_turn_now"
+                            android:layout_width="0dp" android:layout_height="48dp"
+                            android:layout_weight="1" android:layout_marginEnd="8dp"
+                            android:text="Putar"
+app:icon="@drawable/ic_refresh"
+                            android:backgroundTint="@color/accent_primary"
+                            android:textColor="@color/text_on_accent" android:textSize="13sp"/>
+                        <Button android:id="@+id/btn_motor_stop"
+                            android:layout_width="0dp" android:layout_height="48dp"
+                            android:layout_weight="1" android:layout_marginStart="8dp"
+                            android:text="Stop"
+app:icon="@drawable/ic_stop"
+                            android:backgroundTint="@color/bg_elevated"
+                            android:textColor="@color/status_error" android:textSize="13sp"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            app:strokeColor="@color/status_error"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

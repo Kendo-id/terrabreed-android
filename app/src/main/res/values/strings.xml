@@ -1,0 +1,126 @@
+<resources>
+    <string name="app_name">TerraBreed</string>
+    <string name="app_tagline">Smart Incubator Monitor</string>
+
+    <!-- Navigation -->
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_temperature">Suhu</string>
+    <string name="nav_humidity">Kelembapan</string>
+    <string name="nav_incubation">Inkubasi</string>
+    <string name="nav_ai_chat">TERRA AI</string>
+    <string name="nav_settings">Pengaturan</string>
+
+    <!-- Sensor Labels -->
+    <string name="label_temperature">Suhu</string>
+    <string name="label_humidity">Kelembapan</string>
+    <string name="label_target_temp">Target Suhu</string>
+    <string name="label_target_humid">Target Kelembapan</string>
+    <string name="label_heater">Pemanas</string>
+    <string name="label_humidifier">Humidifier</string>
+    <string name="label_fan">Kipas</string>
+    <string name="label_tray">Posisi Rak</string>
+    <string name="label_auto_mode">Mode Otomatis</string>
+    <string name="label_motor">Motor</string>
+    <string name="unit_celsius">°C</string>
+    <string name="unit_percent">%</string>
+
+    <!-- Status -->
+    <string name="status_on">ON</string>
+    <string name="status_off">OFF</string>
+    <string name="status_auto">Otomatis</string>
+    <string name="status_manual">Manual</string>
+    <string name="status_connected">Terhubung</string>
+    <string name="status_disconnected">Terputus</string>
+    <string name="status_loading">Memuat…</string>
+    <string name="status_no_data">Data tidak tersedia</string>
+    <string name="status_active">Aktif</string>
+    <string name="status_inactive">Tidak Aktif</string>
+
+    <!-- Incubation -->
+    <string name="incubation_active_session">Sesi Inkubasi Aktif</string>
+    <string name="incubation_no_session">Tidak ada sesi inkubasi aktif</string>
+    <string name="incubation_species">Spesies</string>
+    <string name="incubation_total_eggs">Jumlah Telur</string>
+    <string name="incubation_day_count">Hari ke-</string>
+    <string name="incubation_remaining">Sisa Hari</string>
+    <string name="incubation_started">Mulai</string>
+    <string name="incubation_estimated_hatch">Perkiraan Menetas</string>
+    <string name="incubation_progress">Progress</string>
+    <string name="incubation_start_new">Mulai Sesi Baru</string>
+    <string name="incubation_finish">Selesaikan Sesi</string>
+    <string name="incubation_days_suffix"> hari</string>
+    <string name="incubation_eggs_suffix"> butir</string>
+
+    <!-- AI Voice -->
+    <string name="ai_voice_title">TERRA AI Voice Call</string>
+    <string name="ai_voice_tap_speak">Tekan untuk Bicara</string>
+    <string name="ai_voice_listening">Mendengarkan…</string>
+    <string name="ai_voice_processing">TERRA sedang berpikir…</string>
+    <string name="ai_voice_speaking">TERRA sedang bicara…</string>
+    <string name="ai_voice_release">Lepas untuk kirim</string>
+    <string name="ai_voice_error">Gagal memproses suara</string>
+    <string name="ai_voice_permission_needed">Izin mikrofon diperlukan</string>
+    <string name="ai_voice_end_call">Akhiri Panggilan</string>
+    <string name="ai_voice_greeting">Halo! Saya TERRA, asisten AI mesin tetas TerraBreed. Ada yang bisa saya bantu?</string>
+
+    <!-- Charts -->
+    <string name="chart_last_1h">1 Jam</string>
+    <string name="chart_last_3h">3 Jam</string>
+    <string name="chart_last_6h">6 Jam</string>
+    <string name="chart_last_24h">24 Jam</string>
+    <string name="chart_no_data">Belum ada data grafik</string>
+    <string name="chart_temp_title">Riwayat Suhu</string>
+    <string name="chart_humid_title">Riwayat Kelembapan</string>
+
+    <!-- Widget Labels -->
+    <string name="widget_temp_label">TerraBreed - Suhu</string>
+    <string name="widget_humid_label">TerraBreed - Kelembapan</string>
+    <string name="widget_incubation_label">TerraBreed - Inkubasi</string>
+    <string name="widget_ai_voice_label">TerraBreed - TERRA AI</string>
+    <string name="widget_tap_for_voice">Tap untuk bicara dengan TERRA</string>
+    <string name="widget_open_app">Buka Aplikasi</string>
+    <string name="widget_last_update">Update terakhir: %s</string>
+
+    <!-- Settings -->
+    <string name="settings_server_title">Konfigurasi Server</string>
+    <string name="settings_server_ip">Alamat IP Server</string>
+    <string name="settings_server_port">Port Server</string>
+    <string name="settings_server_hint">Contoh: 10.10.10.1</string>
+    <string name="settings_port_hint">Contoh: 5000</string>
+    <string name="settings_refresh_interval">Interval Refresh (detik)</string>
+    <string name="settings_test_connection">Test Koneksi</string>
+    <string name="settings_connection_ok">Koneksi berhasil!</string>
+    <string name="settings_connection_fail">Koneksi gagal: %s</string>
+    <string name="settings_voice_title">Pengaturan Suara</string>
+    <string name="settings_tts_voice">Suara TTS</string>
+    <string name="settings_saved">Pengaturan disimpan</string>
+
+    <!-- Actions -->
+    <string name="action_refresh">Refresh</string>
+    <string name="action_save">Simpan</string>
+    <string name="action_cancel">Batal</string>
+    <string name="action_ok">OK</string>
+    <string name="action_retry">Coba Lagi</string>
+    <string name="action_clear_chat">Hapus Riwayat Chat</string>
+
+    <!-- Error Messages -->
+    <string name="error_network">Tidak dapat terhubung ke server. Periksa koneksi jaringan.</string>
+    <string name="error_server">Server error: %s</string>
+    <string name="error_no_server">Alamat server belum dikonfigurasi</string>
+    <string name="error_audio_record">Tidak dapat merekam audio</string>
+    <string name="error_tts">TTS tidak tersedia</string>
+    <string name="error_stt">Transkripsi gagal</string>
+
+
+    <!-- Control -->
+    <string name="nav_control">Kontrol</string>
+    <string name="control_actuators">Kontrol Aktuator</string>
+    <string name="control_target">Target Parameter</string>
+    <string name="control_tray">Kontrol Rak</string>
+    <string name="label_auto_on">Mode Otomatis: ON</string>
+    <string name="label_auto_off">Mode Manual: ON</string>
+    <string name="btn_turn_now">Putar Rak Sekarang</string>
+    <string name="btn_motor_stop">Stop Motor</string>
+    <string name="btn_apply">Terapkan</string>
+    <string name="settings_use_https">Gunakan HTTPS</string>
+</resources>
